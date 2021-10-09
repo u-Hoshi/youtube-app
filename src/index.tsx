@@ -1,18 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// BrowserRouterをインポート
 import { BrowserRouter } from 'react-router-dom';
 import { RootRouter } from './Route';
 import { createTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
-// Material-UIの「テーマ」を作成する。
-// Material-UIのテーマ（色など）をカスタマイズする際には、createThemeの引数にカスタマイズ項目を渡す。
-// 今回は何もカスタマイズしないので、何も指定していない。
+
+// 先程のグローバルスタイルをimport
+import GlobalStyle from './GlobalStyle';
+
 const theme = createTheme();
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+        <CssBaseline />
+
+        {/*
+          アプリ全体の特殊なグローバルスタイリング
+        */}
+        <GlobalStyle />
+
         <RootRouter />
       </BrowserRouter>
     </ThemeProvider>
